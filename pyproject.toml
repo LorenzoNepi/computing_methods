@@ -14,7 +14,7 @@ build-backend = "hatchling.build"
 # the package in this section. They will be automatically installed.
 
 [project]
-name = "metarep"
+name = "computing_methods"
 dynamic = ["version"] # "version" as a dynamic field so it is  automatically updated
 description = "Project by Lorenzo Nepi for the Computing Methods for Experimental Physiscs and Data Analysis course"
 readme = "README.md"
