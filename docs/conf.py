@@ -28,16 +28,18 @@ release = version
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    "sphinx.ext.autodoc",       #automatically generates documentation form docstrings
-    "sphinx.ext.todo",          
-    "sphinx.ext.viewcode",      #adds links to source code in the documentation
+    "sphinx.ext.autodoc",       # automatically generates documentation form docstrings
+    "sphinx.ext.todo",
+    "sphinx.ext.viewcode",      # adds links to source code in the documentation
 ]
-autodoc_default_options = {     #configurating the autodoc extension...
+
+autodoc_default_options = {     # configurating the autodoc extension...
     "members": True,
     "member-order": "bysource",
     "undoc-members": True,
     "private-members": True
 }
+autodoc_typehints_format = "short"
 todo_include_todos = True
 
 # Options for syntax highlighting.
@@ -56,7 +58,7 @@ rst_prolog = f"""
 """
 
 # Options for source files.
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]     #Excludes these directories while searching for source code
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]     # Excludes these directories while searching for source code
 
 # Options for templating.
 templates_path = ["_templates"]

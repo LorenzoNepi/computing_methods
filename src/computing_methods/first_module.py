@@ -7,7 +7,7 @@ from numpy.typing import NDArray
 def rot_axis(
     vector: NDArray[np.float64], angle: float, axis: NDArray[np.float64]
     ) -> NDArray[np.float64]:
-    """Rotate a vector [x, y, z] around a given axis by a certain angle
+    """Rotate a vector [x, y, z] around a given axis by a certain angle.
 
     Parameters
     ----------
@@ -33,7 +33,7 @@ def rot_axis(
                                                                       np.dot(axis, vector) * axis)
 
 def rot_angle(vec1: NDArray[np.float64], vec2: NDArray[np.float64]) -> float:
-    """Computes the angle between two vectors [x, y, z]
+    """Compute the angle between two vectors [x, y, z].
 
     Parameters
     ----------
@@ -54,13 +54,12 @@ def rot_angle(vec1: NDArray[np.float64], vec2: NDArray[np.float64]) -> float:
                     (np.linalg.norm(vec1) * np.linalg.norm(vec2)), -1.0, 1.0))
 
 def find_perp(vec1: NDArray[np.float64], vec2: NDArray[np.float64]) -> NDArray[np.float64]:
-    """Finds a vector perpendicular to two given vectors [x, y, z] (right hand rule)
+    """Find a vector perpendicular to two given vectors [x, y, z] (right hand rule).
 
     Parameters
     ----------
     vec1 : np.ndarray
         First vector
-
     vec2 : np.ndarray
         Second vector
 
