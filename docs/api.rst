@@ -3,4 +3,4 @@
 APIs
 ====
 
-.. automodule:: metarep.utils
+.. automodule:: computing_methods.first_module
