@@ -9,6 +9,7 @@ from ._version import __version__ as __base_version__
 # access and recognize all the subsequent changes of the code. This will make it
 # easier to find and correct bugs
 
+
 def _git_suffix() -> str:
     """
     This will return something along the lines of ``+gf0f18e6.dirty``, which is
@@ -17,8 +18,7 @@ def _git_suffix() -> str:
 
     # pylint: disable=broad-except
 
-    kwargs = dict(cwd=pathlib.Path(__file__).parent,
-                  stderr=subprocess.DEVNULL)
+    kwargs = dict(cwd=pathlib.Path(__file__).parent, stderr=subprocess.DEVNULL)
 
     # Note:
     # - cwd=pathlib.Path(__file__).parent
@@ -35,9 +35,8 @@ def _git_suffix() -> str:
         # newlines and spaces.
 
         args = ["git", "rev-parse", "--short", "HEAD"]
-        sha = subprocess.check_output(args, **kwargs).decode().strip()          # type: ignore
+        sha = subprocess.check_output(args, **kwargs).decode().strip()  # type: ignore
         suffix = f"+g{sha}"
-
 
         # If we have uncommitted changes, we want to append a `.dirty`
         # to the version suffix.
@@ -47,10 +46,11 @@ def _git_suffix() -> str:
         # if there are uncommitted changes.
 
         args = ["git", "diff", "--quiet"]
-        if subprocess.call(args, stdout=subprocess.DEVNULL, **kwargs) != 0:     # type: ignore
+        if subprocess.call(args, stdout=subprocess.DEVNULL, **kwargs) != 0:  # type: ignore
             suffix = f"{suffix}.dirty"
         return suffix
     except Exception:
         return ""
+
 
 __version__ = f"{__base_version__}{_git_suffix()}"
