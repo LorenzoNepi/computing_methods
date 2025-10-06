@@ -34,8 +34,10 @@ dependencies = [
 dev = [
     "pytest",
     "ruff",   #
-    "pylint", #for the static analysis of the code
-    "mypy"    #
+    "pylint", # for the static analysis of the code
+    "mypy",   #
+    "nox"     # to automate some sessions
+
   ]
 docs = [
     "sphinx",
