@@ -4,10 +4,10 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 import importlib.metadata
-import os
-import sys
 
 # Adding the directory to the PYTHONPATH
+# import os
+# import sys
 # sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
 
 from computing_methods import __version__, __name__ as __package_name__
