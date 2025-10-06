@@ -18,7 +18,7 @@ name = "computing_methods"
 dynamic = ["version"] # "version" as a dynamic field so it is  automatically updated
 description = "Project by Lorenzo Nepi for the Computing Methods for Experimental Physiscs and Data Analysis course"
 readme = "README.md"
-license = { file = "LICENSE" } 
+license = { file = "LICENSE" }
 requires-python = ">=3.12"
 authors = [
   { name = "Lorenzo Nepi", email = "l.nepi@studenti.unipi.it" }
@@ -35,6 +35,7 @@ dev = [
     "pytest",
     "ruff",   #
     "pylint", #for the static analysis of the code
+    "mypy"    #
   ]
 docs = [
     "sphinx",
@@ -60,7 +61,7 @@ src = ["src"]               # directory that ruff has to analyze
 exclude = ["docs"]          # path that ruff can ignore
 
 # Specific useful linting rules for ruff (essentialy style rules):
-[tool.ruff.lint] 
+[tool.ruff.lint]
 select = [
   "E",   # pycodestyle errors
   "F",   # pyflakes (for static errors)
@@ -69,7 +70,7 @@ select = [
   "UP",  # pyupgrade (tips to upgrade the code)
   "SIM", # flake8-simplify (tips to simplify the code)
   "C4",  # flake8-comprehensions (tips for list/dict/set comprehension)
-  "NPY", # NumPy-specific best practices 
+  "NPY", # NumPy-specific best practices
   "PERF" # performance gotchas (warnings for pattern with possible performance problem)
   ]
 
@@ -79,7 +80,7 @@ ignore = [
   ]
 
 # pylint configuration:
-[tool.pylint.'MESSAGES CONTROL'] #Disabling some pylint messages
+[tool.pylint.'MESSAGES CONTROL'] # Disabling some pylint messages
 disable = [
   "missing-docstring",
   "too-few-public-methods",
@@ -90,8 +91,32 @@ disable = [
   "use-dict-literal",
   ]
 
-[tool.pylint.'BASIC']           #Defining some acceptable names for variables for pylint
-good-names = ["i", "j", "k", "x", "y", "z"] 
+[tool.pylint.'BASIC']           # Defining some acceptable names for variables for pylint
+good-names = ["i", "j", "k", "x", "y", "z"]
 
-[tool.pylint.'FORMAT']          #Defining accepted line length for pylint
+[tool.pylint.'FORMAT']          # Defining accepted line length for pylint
 max-line-length = 100
+
+
+# mypy configuration:
+# https://mypy.readthedocs.io/en/stable/config_file.html
+
+[tool.mypy]
+python_version = "3.12"         # Python version used in the project
+files = ["src"]                 # directory of the code
+exclude = ["docs"]              # directory to ignore
+
+ignore_missing_imports = true   # doesn't care for missing type hints in external libraries
+
+check_untyped_defs = true       # checks the code even in funtions without type hints
+disallow_incomplete_defs = true # forsec to write type annotations in default arguments
+disallow_untyped_defs = true    # forces to write type hints in all functions
+allow_untyped_globals = true    # stop errors on untyped global variables
+
+warn_unused_ignores = true      # warns if a "# type: ignore" is not needed
+warn_redundant_casts = true     # checks for useless type hints
+warn_unreachable = true         # warns for unreachable code
+strict_optional = true          # strict checks for None values
+
+pretty = true                   # returns a readable output
+color_output = true
