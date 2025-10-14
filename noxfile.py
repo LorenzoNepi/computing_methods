@@ -19,18 +19,27 @@ nox.options.reuse_existing_virtualenvs = True
 
 # Session to cleanup pycache and other temporary files --> nox -s cleanup
 @nox.session(venv_backend="none")
-def cleanup(session: nox.Session) -> None:
+def cleanup(_session: nox.Session) -> None:
     """Cleanup temporary files.
     """
     # Remove all the __pycache__ folders.
     for folder_path in (_ROOT_DIR, _SRC_DIR, _TESTS_DIR):
-        _path = folder_path / "__pycache__"
-        if _path.exists():
-            shutil.rmtree(_path)
+        _path1 = folder_path / "__pycache__"
+        _path2 = folder_path / ".mypy_cache"
+        _path3 = folder_path / ".nox"
+        _path4 = folder_path / ".ruff_cache"
+        if _path1.exists():
+            shutil.rmtree(_path1)
+        if _path2.exists():
+            shutil.rmtree(_path2)
+        if _path3.exists():
+            shutil.rmtree(_path3)
+        if _path4.exists():
+            shutil.rmtree(_path4)
     # Cleanup the docs.
     _path = _DOCS_DIR / "_build"
     if _path.exists():
-            shutil.rmtree(_path)
+        shutil.rmtree(_path)
 
 # Session to create the documentation locally --> nox -s docs
 @nox.session(venv_backend="none")
