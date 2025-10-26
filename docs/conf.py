@@ -30,7 +30,8 @@ release = version
 extensions = [
     "sphinx.ext.autodoc",       # automatically generates documentation form docstrings
     "sphinx.ext.todo",
-    "sphinx.ext.viewcode",      # adds links to source code in the documentation
+    "sphinx.ext.viewcode"      # adds links to source code in the documentation
+    #"sphinx.ext.napoleon",      # for NumPy docstrings
 ]
 
 autodoc_default_options = {     # configurating the autodoc extension...
@@ -39,7 +40,8 @@ autodoc_default_options = {     # configurating the autodoc extension...
     "undoc-members": True,
     "private-members": True
 }
-autodoc_typehints_format = "short"
+autodoc_typehints = "none"      # show type hints only in the docstring not in the firm
+#autodoc_typehints_format = "short"
 todo_include_todos = True
 
 # Options for syntax highlighting.
